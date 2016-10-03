@@ -3,6 +3,6 @@ CrawlerPasteBin
 Java pastebin crawler
 Pastebin posts and emails found are saved in mongodb database.
 
-For this moment, mongodb mustn't need autentication.
+The progam needs mongodb to save posts but for this moment no autentication must be needed.
 
 !!! Don't crawl pastebin too fast !!!
