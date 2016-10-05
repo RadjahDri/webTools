@@ -1,4 +1,5 @@
 # tor-wget
+Shortcut to use wget by tor
 ## Setup
 - Install torsocks
 
