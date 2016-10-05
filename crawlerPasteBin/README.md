@@ -1,8 +1,16 @@
-CrawlerPasteBin
+# CrawlerPasteBin
+Java crawler specific for pastebin
 
-Java pastebin crawler
-Pastebin posts and emails found are saved in mongodb database.
+Catch every new pastebin post content and email adresses. They are save in mongodb database.
+## Setup
+- Install java
 
-The progam needs mongodb to save posts but for this moment no autentication must be needed.
+``apt-get install openjdk-7-jre``
+- Install mongodb
 
-!!! Don't crawl pastebin too fast !!!
+``apt-get install mongodb``
+- Configure it
+
+[Official documentation](https://docs.mongodb.com/manual/reference/configuration-options/)
+## Use
+``java -jar crawlerPastebin.jar [userMongo passwordMongo] \[host]``
