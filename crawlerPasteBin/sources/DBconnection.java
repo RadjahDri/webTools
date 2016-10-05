@@ -30,6 +30,12 @@ public class DBconnection {
 		this(database, user, password, "127.0.0.1");
 	}
 	
+	public DBconnection(String database){
+		MongoDatabase db = new MongoClient().getDatabase(database);
+		pasteTable = db.getCollection(pasteTableName);
+		emailTable = db.getCollection(emailTableName);
+	}
+	
 	public void insertEmail(String email, String pasteId){
 		Document doc = new Document();
 		doc.append("email", email);

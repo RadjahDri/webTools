@@ -42,16 +42,34 @@ public class Crawler {
 	private DBconnection db;
 	
 	public static void main(String[] args) {
-		if(args.length != 2){
-			System.err.println("Usage: java -jar crawlerPasteBin userMongo passwordMongo");
+		if(args.length != 0 && args.length != 2 && args.length != 3){
+			System.err.println("Usage: java -jar crawlerPasteBin [userMongo passwordMongo] [host]");
 			System.exit(0);
 		}
-		new Crawler(args[0], args[1]).start();
+		else if(args.length == 0){
+			new Crawler().start();
+		}
+		else if(args.length == 2){
+			new Crawler(args[0], args[1]).start();
+		}
+		else if(args.length == 3){
+			new Crawler(args[0], args[1], args[2]).start();
+		}
+	}
+	
+	public Crawler(String user, String password, String host){
+		//Initialize database connection
+		db = new DBconnection("pastebin", user, password, host);
 	}
 	
 	public Crawler(String user, String password){
 		//Initialize database connection
 		db = new DBconnection("pastebin", user, password);
+	}
+	
+	public Crawler(){
+		//Initialize database connection
+		db = new DBconnection("pastebin");
 	}
 	
 	/**
