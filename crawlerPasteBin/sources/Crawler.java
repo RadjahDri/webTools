@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -74,6 +77,7 @@ public class Crawler {
 	
 	/**
 	 * Function to launch crawler
+	 * @throws IOException 
 	 */
 	public void start(){
 		List<String> links = new ArrayList<String>();
@@ -81,19 +85,30 @@ public class Crawler {
 		String lastUrl = new String();
 		boolean stop = false;
 		while(!stop){
-			//Get listing page
-			links = getNewPasteUrl(links.get(0), lastUrl);
-			//Update lastUrl seen
-			if(!links.isEmpty()){
-				lastUrl = links.get(0);
+			try{
+				//Get listing page
+				links = getNewPasteUrl(links.get(0), lastUrl);
+				//Update lastUrl seen
+				if(!links.isEmpty()){
+					lastUrl = links.get(0);
+				}
+				//Crawl every post pages
+				for(String url : links){
+					crawlPage(url);
+				}
+				if(links.isEmpty()){
+					links.add("");
+					sleep(notFoundSleepTime);
+				}
 			}
-			//Crawl every post pages
-			for(String url : links){
-				crawlPage(url);
-			}
-			if(links.isEmpty()){
-				links.add("");
-				sleep(notFoundSleepTime);
+			catch(Exception e){
+				try {
+					BufferedWriter outLog = new BufferedWriter(new FileWriter(new File("err_"+System.currentTimeMillis()+".log")));
+					outLog.write(e.getMessage()+"\n"+e.getStackTrace());
+					outLog.close();
+				} catch (IOException e1) {
+					System.out.println("Error log file can't be writed");
+				}
 			}
 		}
 	}
