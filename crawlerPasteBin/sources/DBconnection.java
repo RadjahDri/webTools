@@ -44,13 +44,15 @@ public class DBconnection {
 		emailTable.insertOne(doc);
 	}
 	
-	public void insertPaste(String title, String author, String date, String content){
+	public void insertPaste(String title, String author, String date, String content, String path){
 		Document doc = new Document();
 		doc.append("title", title);
 		doc.append("author", author);
 		doc.append("date", date);
 		doc.append("content", content);
 		doc.append("timestamp", System.currentTimeMillis());
+		doc.append("id", path);
+		
 		
 		pasteTable.insertOne(doc);
 	}
