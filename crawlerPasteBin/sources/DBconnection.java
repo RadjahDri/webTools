@@ -36,10 +36,11 @@ public class DBconnection {
 		emailTable = db.getCollection(emailTableName);
 	}
 	
-	public void insertEmail(String email, String pasteId){
+	public void insertEmail(String email, String pasteId, String path){
 		Document doc = new Document();
 		doc.append("email", email);
 		doc.append("paste", pasteId);
+		doc.append("id", path);
 		
 		emailTable.insertOne(doc);
 	}

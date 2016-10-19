@@ -222,7 +222,7 @@ public class Crawler {
 				savePaste(title, author, date, content.text(), path);
 			}
 			Set<String> emails = searchEmails(content.text());
-			saveEmails(emails, title);
+			saveEmails(emails, title, path);
 		} catch (IOException e) {
 			System.err.println("crawlPage: "+e.getMessage());
 		}
@@ -236,10 +236,10 @@ public class Crawler {
 	 * @param date
 	 * @param content
 	 */
-	private void saveEmails(Set<String> emails, String pasteId){
+	private void saveEmails(Set<String> emails, String pasteId, String path){
 		if(confSaveMongo){
 			for(String email : emails){
-				db.insertEmail(email, pasteId);
+				db.insertEmail(email, pasteId, path);
 			}
 		}
 	}
