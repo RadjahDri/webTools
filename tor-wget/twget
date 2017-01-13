@@ -1,8 +1,0 @@
-#!/bin/bash
-TOR=`which usewithtor`
-WGET=`which wget`
-if [ $# -eq 0 ]; then
-echo "Usage : twget url";
-exit;
-fi
-$TOR $WGET $1 -U "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"

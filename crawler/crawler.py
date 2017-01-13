@@ -177,7 +177,7 @@ def crawl(url=None, setMails=None, page=False, verbosity=None, fileMail=None, fi
 
 			try:
 				request = urllib2.Request(url=url,headers={'User-Agent':"Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11"})
-				response=urllib2.urlopen(request)
+				response = urllib2.urlopen(request)
 
 				# Only if page is return
 				if(200 <= response.getcode() and response.getcode() <= 399):
