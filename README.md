@@ -5,6 +5,5 @@
 - crawlerPastebin
 
   Specific java crawler for pastebin
-- tor-wget
-
-  Shell script to wget by tor
+  
+If you have any question about my works, don't hesitate to contact me by issues.
